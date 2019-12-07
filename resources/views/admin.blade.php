@@ -3,20 +3,42 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col">
             <div class="card">
-                <div class="card-header">Dashboard - Administrator </div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <h3>You are logged as ADMINISTRATOR</h3>
-                    <p>This page is show just for the administrator with your account</p>
+                <div class="card-header">
+                    <h4 class="title">Categories</h4>
+                    <div class="buttons">
+                        <a class="btn btn-primary" href="/admin/create-category">Add category</a>
+                        <a class="btn btn-warning" href="/admin/create-product">Add product</a>
+                    </div>
                 </div>
+                <ul>
+                    @foreach ($categories as $category)
+                    <li>
+                        <h4>{{ $category->name }}</h4>
+                        <a class="btn btn-danger" href="/admin/delete-category/{{ $category->id }}">Delete category</a>
+                        <ul>
+                            @foreach ($category->products as $p)
+                                <li>
+                                    <div class="card card-product">
+                                        <div class="card-header">
+                                             {{ $p->name }}
+                                            <a class="btn btn-danger" href="/admin/delete-product/{{ $p->id }}">Delete</a>
+                                        </div>
+                                        <div class="card-body">
+                                            <img src="/storage/{{ $p->image }}">
+                                        </div>
+                                        <div class="card-footer">
+                                            <p>Price: {{ $p->price }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <hr>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>

@@ -1,0 +1,33 @@
+.title{
+    display: inline-block;
+}
+
+.card-header > .buttons{
+    float: right;
+}
+
+ul li{
+    list-style: none;
+}
+
+li h4{
+    display: inline-block;
+}
+
+.card-product{
+    float: left;
+    width: 33.3%;
+}
+
+.card-body{
+    width: 200px;
+    height: 200px;
+}
+
+.card-body > img{
+    width: 100%;
+}
+
+.card-footer{
+    color: green;
+}
